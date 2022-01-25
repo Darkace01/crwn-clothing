@@ -11,6 +11,9 @@ import "./header.styles.scss";
 //utils
 import { auth } from "../../firebase/firebase.utils";
 
+//component
+import CartIcon from "../cart-icon/cart-icon.component";
+
 const Header = ({ currentUser }) => (
   <div className="header">
     <Link className="logo-container" to="/">
@@ -32,6 +35,7 @@ const Header = ({ currentUser }) => (
           SIGN IN
         </Link>
       )}
+      <CartIcon />
     </div>
   </div>
 );
