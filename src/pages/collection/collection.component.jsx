@@ -1,15 +1,17 @@
 import React from "react";
-
+//utils
+import { connect } from "react-redux";
+//components
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
 //styling
-import "./category.styles.scss";
+import "./collection.styles.scss";
 
-const CategoryPage = ({ match }) => (
+const CollectionPage = ({ match }) => (
   <div className="category">
     <h2>Category Page</h2>
-    <CollectionItem />
+    {/* <CollectionItem /> */}
   </div>
 );
 
-export default CategoryPage;
+export default CollectionPage;
