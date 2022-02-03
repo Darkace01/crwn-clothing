@@ -11,6 +11,7 @@ import {
 //components
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
+
 //styling
 import "./checkout.styles.scss";
 
