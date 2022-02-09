@@ -1,7 +1,9 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import "./App.css";
+import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+import "./App.css";
 
 //page components
 import HomePage from "./pages/homepage/homepage.component";
@@ -13,7 +15,6 @@ import Header from "./components/header/header.component";
 
 //utils
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
@@ -21,20 +22,23 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
     const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapshot) => {
+        userRef.onSnapshot((snapShot) => {
           setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
+            id: snapShot.id,
+            ...snapShot.data(),
           });
         });
       }
-      if (!userAuth) {
-        setCurrentUser({ userAuth });
-      }
+      // console.log(userAuth);
+      // if (!userAuth) {
+      //   console.log("User is null");
+      // }
+      setCurrentUser({ userAuth });
     });
   }
   componentWillUnmount() {
