@@ -38,7 +38,7 @@ class App extends React.Component {
       // if (!userAuth) {
       //   console.log("User is null");
       // }
-      setCurrentUser({ userAuth });
+      setCurrentUser(userAuth);
     });
   }
   componentWillUnmount() {
