@@ -2,6 +2,7 @@ import React from "react";
 
 //utils
 import { Route } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   firestore,
   convertCollectionsSnapshotToMap,
@@ -18,7 +19,7 @@ class ShopPage extends React.Component {
     const collectionRef = firestore.collection("collections");
 
     collectionRef.onSnapshot(async (snapshot) => {
-      convertCollectionsSnapshotToMap(snapshot);
+      const collectionMap = convertCollectionsSnapshotToMap(snapshot);
     });
   }
   render() {
